@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Height="330" Margin="0,38,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="747"/>
-        <Button Content="See Assets" HorizontalAlignment="Left" Margin="45,392,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.963,-0.323" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="169*"/>
+            <RowDefinition Height="266*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="Asset_Button" Content="See Assets" HorizontalAlignment="Center" Margin="0,198,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.963,-0.323" Click="Button_Click" Height="38" Width="108" Grid.Row="1"/>
+        <TextBox x:Name="DatabaseText" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="780" Height="352" Grid.RowSpan="2"/>
 
     </Grid>
 </Window>

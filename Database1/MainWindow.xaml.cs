@@ -26,23 +26,33 @@ namespace Database1
         public MainWindow()
         {
             InitializeComponent();
-            cn = new System.Data.OleDb.OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source =| DataDirectory |\\Database.accdb");
+            cn = new System.Data.OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Database.accdb");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string query = "select * from Assets";
+            string query = "select EmployeeID from Assets";
+            string query1 = "select AssetID from Assets";
             OleDbCommand cmd = new OleDbCommand(query, cn);
+            OleDbCommand cmd1 = new OleDbCommand(query1, cn);
 
             cn.Open();
 
             OleDbDataReader read = cmd.ExecuteReader();
+            OleDbDataReader read1 = cmd1.ExecuteReader();
             string data = "";
+            string data1 = "";
 
             while (read.Read())
             {
-                data += read.GetString(0) + "\n";
+                data += read[0].ToString() + "\n";
+                DatabaseText.Text = data;
+
+                data1 += read1[0].ToString() + "\n";
+                DatabaseText.Text = data1;
             }
+
+            cn.Close();
         }
     }
 }
